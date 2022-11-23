@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "petphraseplus",
+  "version": "0.1.0",
+
+  "name": "Pet Phrase Plus Mod",
+  "description": "",
+  "authors": [
+    "WolfGenerals"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "MIT",
+  "icon": "assets/petphraseplus/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.github.wolfgenerals.petphraseplus.PetPhrasePlusClient"
+    ]
+  },
+  "mixins": [
+    "petphraseplus.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
