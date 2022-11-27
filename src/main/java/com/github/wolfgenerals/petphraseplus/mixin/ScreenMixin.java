@@ -17,6 +17,7 @@ public abstract class ScreenMixin  {
     protected MinecraftClient client;
 
 
+
     @Inject(method = "sendMessage(Ljava/lang/String;)V", at = @At("HEAD"), cancellable = true)
     public void onSendMessage(String message, CallbackInfo ci) {
         this.client.inGameHud.getChatHud().addToMessageHistory(message);

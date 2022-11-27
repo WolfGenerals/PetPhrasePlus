@@ -1,16 +1,31 @@
 package com.github.wolfgenerals.petphraseplus;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import com.github.wolfgenerals.petphraseplus.config.Command;
+import com.github.wolfgenerals.petphraseplus.config.ConfigSL;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+
+import java.io.IOException;
 
 @Environment(EnvType.CLIENT)
 public class PetPhrasePlusClient implements ClientModInitializer {
 
     @Override
     public  void onInitializeClient() {
-        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        try {
+            ConfigSL.newFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ConfigSL.loadConfig();
+        CommandRegistrationCallback.EVENT.register((
+                (dispatcher, dedicated) -> Command.register(dispatcher)
+        ));
+        ClientTickEvents.END_CLIENT_TICK.register(Command::openScreen);
     }
+
+
 }

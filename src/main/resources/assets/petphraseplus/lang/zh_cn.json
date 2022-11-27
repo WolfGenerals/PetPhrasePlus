@@ -1,0 +1,15 @@
+{
+  "petphraseplus.config.title": "Pet Phrase Plus 配置",
+  "petphraseplus.config.category": "",
+  "petphraseplus.config.enable": "启用",
+  "petphraseplus.config.enable.tooltip": "决定mod是否生效",
+  "petphraseplus.config.mark": "标记符",
+  "petphraseplus.config.mark.tooltip1": "当标记符在将被替换的关键字前,使其不被替换",
+  "petphraseplus.config.mark.tooltip2": "当标记符在将被替换的关键字前,使其不被替换;当标记符消息末尾,后缀不被添加",
+  "petphraseplus.config.replace": "替换",
+  "petphraseplus.config.replace.tooltip": "写法   被替换的关键字/用来替换的关键字",
+  "petphraseplus.config.endInner": "标点内后缀",
+  "petphraseplus.config.endInner.tooltip": "将被添加到标点符号的内部",
+  "petphraseplus.config.endOuter": "标点外后缀",
+  "petphraseplus.config.endOuter.tooltip": "将被添加到标点符号的外部"
+}

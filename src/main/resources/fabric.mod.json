@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "petphraseplus",
-  "version": "0.1.0",
+  "version": "1.0.0",
 
   "name": "Pet Phrase Plus Mod",
   "description": "",
@@ -27,10 +27,11 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": "*",
     "fabric": "*",
-    "minecraft": "~1.18.2",
-    "java": ">=17"
+    "minecraft": "*",
+    "java": "*",
+    "cloth-config": "*"
   },
   "suggests": {
     "another-mod": "*"
