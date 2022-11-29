@@ -1,11 +1,11 @@
 package com.github.wolfgenerals.petphraseplus;
 
+import com.github.wolfgenerals.petphraseplus.config.Command;
 import com.github.wolfgenerals.petphraseplus.config.ConfigSL;
-import com.github.wolfgenerals.petphraseplus.config.ConfigScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import java.io.IOException;
 
@@ -13,20 +13,15 @@ import java.io.IOException;
 public class PetPhrasePlusClient implements ClientModInitializer {
 
     @Override
-    public  void onInitializeClient() {
+    public void onInitializeClient() {
         try {
             ConfigSL.newFile();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         ConfigSL.loadConfig();
-        ClientCommandManager.DISPATCHER.register(
-                ClientCommandManager.literal("petphraseplus").executes(context -> {
-                    context.getSource().getClient().setScreen(ConfigScreen.configScreen(context.getSource().getClient().currentScreen));
-                    return 1;
-                        }
-                )
-        );
+        Command.register();
+        ClientTickEvents.END_CLIENT_TICK.register(Command::openScreen);
     }
 
 
