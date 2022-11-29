@@ -19,7 +19,7 @@ public class ConfigSL {
         }
     }
 
-    public static void loadConfig () {
+    public static void loadConfig() {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(PATH.toString()));
@@ -36,17 +36,17 @@ public class ConfigSL {
         }
     }
 
-    public static void saveConfig () throws IOException {
+    public static void saveConfig() throws IOException {
         Properties properties = new Properties();
 
         properties.setProperty("enable", String.valueOf(ConfigOption.enabled));
-        properties.setProperty("mark",ConfigOption.mark);
-        properties.setProperty("endInner",ConfigOption.endInner);
-        properties.setProperty("endOuter",ConfigOption.endOuter);
+        properties.setProperty("mark", ConfigOption.mark);
+        properties.setProperty("endInner", ConfigOption.endInner);
+        properties.setProperty("endOuter", ConfigOption.endOuter);
 
         for (int i = 0; i < ConfigOption.replace.size(); i++) {
-            properties.setProperty("replace"+i,ConfigOption.replace.get(i));
+            properties.setProperty("replace" + i, ConfigOption.replace.get(i));
         }
-        properties.store(new FileOutputStream(PATH.toString()),"PetPhrasePlus Config");
+        properties.store(new FileOutputStream(PATH.toString()), "PetPhrasePlus Config");
     }
 }

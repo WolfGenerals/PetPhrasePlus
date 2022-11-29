@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConfigScreen {
-    public static Screen configScreen (Screen parent){
+    public static Screen configScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create().setParentScreen(parent).setTitle(new TranslatableText("petphraseplus.config.title"));
 
-        builder.setSavingRunnable(()->{
+        builder.setSavingRunnable(() -> {
             try {
                 ConfigSL.saveConfig();
             } catch (IOException e) {
@@ -26,12 +26,12 @@ public class ConfigScreen {
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
         general.addEntry(entryBuilder
-                .startBooleanToggle(new TranslatableText("petphraseplus.config.enable"),ConfigOption.enabled)
+                .startBooleanToggle(new TranslatableText("petphraseplus.config.enable"), ConfigOption.enabled)
                 .setDefaultValue(true)
                 .setTooltip(new TranslatableText("petphraseplus.config.enable.tooltip"))
                 .setSaveConsumer(newValue -> ConfigOption.enabled = newValue)
                 .build()
-                );
+        );
         general.addEntry(entryBuilder
                 .startStrField(new TranslatableText("petphraseplus.config.mark"), ConfigOption.mark)
                 .setDefaultValue("")
@@ -41,27 +41,27 @@ public class ConfigScreen {
                 .build()
         );
         general.addEntry(entryBuilder
-                .startStrList(new TranslatableText("petphraseplus.config.replace"),ConfigOption.replace)
+                .startStrList(new TranslatableText("petphraseplus.config.replace"), ConfigOption.replace)
                 .setDefaultValue(new ArrayList<>())
                 .setTooltip(new TranslatableText("petphraseplus.config.replace.tooltip"))
                 .setSaveConsumer(newValue -> ConfigOption.replace = newValue)
                 .build()
         );
         general.addEntry(entryBuilder
-                .startStrField(new TranslatableText("petphraseplus.config.endInner"),ConfigOption.endInner)
+                .startStrField(new TranslatableText("petphraseplus.config.endInner"), ConfigOption.endInner)
                 .setDefaultValue("")
                 .setTooltip(new TranslatableText("petphraseplus.config.endInner.tooltip"))
                 .setSaveConsumer(newValue -> ConfigOption.endInner = newValue)
                 .build()
         );
         general.addEntry(entryBuilder
-                .startStrField(new TranslatableText("petphraseplus.config.endOuter"),ConfigOption.endOuter)
+                .startStrField(new TranslatableText("petphraseplus.config.endOuter"), ConfigOption.endOuter)
                 .setDefaultValue("")
                 .setTooltip(new TranslatableText("petphraseplus.config.endOuter.tooltip"))
                 .setSaveConsumer(newValue -> ConfigOption.endOuter = newValue)
                 .build()
         );
-      return builder.build();
+        return builder.build();
 
     }
 
