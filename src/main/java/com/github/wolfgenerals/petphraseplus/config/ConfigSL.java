@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class ConfigSL {
@@ -30,9 +31,11 @@ public class ConfigSL {
         ConfigOption.mark = properties.getProperty("mark", "&");
         ConfigOption.endInner = properties.getProperty("endInner", "");
         ConfigOption.endOuter = properties.getProperty("endOuter", "");
+        ConfigOption.replace = new ArrayList<>();
         int i = 0;
         while (properties.getProperty("replace" + i) != null) {
             ConfigOption.replace.add(properties.getProperty("replace" + i));
+            i++;
         }
     }
 

@@ -18,6 +18,7 @@ public class Command {
 
     public static void openScreen(MinecraftClient client) {
         if (needOpen) {
+            ConfigSL.loadConfig();
             MinecraftClient.getInstance().setScreen(ConfigScreen.configScreen(client.currentScreen));
             needOpen = false;
         }
