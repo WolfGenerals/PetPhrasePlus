@@ -38,7 +38,7 @@ public class Util {
 
     private static String endInner(String original, String endInner, int subscript) {
         String m;
-if(subscript==0){return original;}//记事本代码大法
+        if(subscript==0) {return original;}//记事本代码大法
         if (punctuations.contains(original.charAt(subscript - 1))) {
             m = endInner(original, endInner, subscript - 1);
         } else {
