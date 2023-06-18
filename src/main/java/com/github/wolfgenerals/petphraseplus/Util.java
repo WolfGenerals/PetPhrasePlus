@@ -5,7 +5,11 @@ import com.github.wolfgenerals.petphraseplus.config.ConfigOption;
 import java.util.List;
 
 public class Util {
-    static final List<Character> punctuations = List.of('!', '?', '.', '(', ')', '！', '？', '。', '（', '）', '~', '”', '“', '‘', '’', '"', '\'');
+    static final List<Character> punctuations = List.of(
+            '!', '?', '.', ';', ':', '(', ')', '~', '"', '\'', '[', ']', '{', '}',
+            '！', '？', '。', '；', '：', '（', '）', '～', '“', '”', '‘', '’', '【', '】', '｛', '｝',
+            '¡', '¿', '「', '」', '『', '』'
+    );
 
     private static String getReplaced(String replace) {
         int index = replace.indexOf("/");
