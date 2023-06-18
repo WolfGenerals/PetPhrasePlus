@@ -38,7 +38,7 @@ public class Util {
 
     private static String endInner(String original, String endInner, int subscript) {
         String m;
-        if(subscript==0) {return original;}//记事本代码大法
+        if (subscript==0) {return original;}//记事本代码大法
         if (punctuations.contains(original.charAt(subscript - 1))) {
             m = endInner(original, endInner, subscript - 1);
         } else {
@@ -55,18 +55,15 @@ public class Util {
     }
 
     public static String petphraseplus(String message) {
-        if (ConfigOption.enabled) {
-            if (message.charAt(0) != '/') {
-                for (int index = 0; index < ConfigOption.replace.size(); index++) {
-                    message = Util.replaceString(message, ConfigOption.replace.get(index), ConfigOption.mark);
-                }
-                if (!message.endsWith(ConfigOption.mark)) {
-                    message = Util.endInner(message, ConfigOption.endInner, message.length());
-                    message = Util.insert(message, ConfigOption.endOuter, message.length());
-                } else {
-                    return message.substring(0, message.length() - 1);
-                }
-
+        if (message.charAt(0) != '/') {
+            for (int index = 0; index < ConfigOption.replace.size(); index++) {
+                message = Util.replaceString(message, ConfigOption.replace.get(index), ConfigOption.mark);
+            }
+            if (!message.endsWith(ConfigOption.mark)) {
+                message = Util.endInner(message, ConfigOption.endInner, message.length());
+                message = Util.insert(message, ConfigOption.endOuter, message.length());
+            } else {
+                return message.substring(0, message.length() - 1);
             }
         }
         return message;
