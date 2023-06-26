@@ -17,10 +17,9 @@ public abstract class ChatScreenMixin {
     protected MinecraftClient client = MinecraftClient.getInstance();
 
 
-
-    @Inject(method = "sendMessage", at = @At("HEAD"), cancellable = true)
-    public void onSendMessage(String chatText, boolean addToHistory, CallbackInfoReturnable<Boolean> cir) {
-        if (chatText.charAt(0) != '/' && ConfigOption.enabled) {
+    @Inject(method = "sendMessage(Ljava/lang/String;Z)Z", at = @At("HEAD"), cancellable = true)
+    public void sendMessage(String chatText, boolean addToHistory, CallbackInfoReturnable<Boolean> cir) {
+        if (!chatText.isEmpty() && ConfigOption.enabled && chatText.charAt(0) != '/') {
             this.client.inGameHud.getChatHud().addToMessageHistory(chatText);
             assert this.client.player != null;
             this.client.player.networkHandler.sendChatMessage(Util.petphraseplus(chatText));
