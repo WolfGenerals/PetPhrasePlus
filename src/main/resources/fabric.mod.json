@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "petphraseplus",
-  "version": "1.1.0",
+  "version": "1.2.1",
 
   "name": "Pet Phrase Plus Mod",
   "description": "",
@@ -20,6 +20,9 @@
   "entrypoints": {
     "client": [
       "com.github.wolfgenerals.petphraseplus.PetPhrasePlusClient"
+    ],
+    "modmenu": [
+      "com.github.wolfgenerals.petphraseplus.config.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -28,10 +31,11 @@
 
   "depends": {
     "fabric": "*",
-    "minecraft": "*",
+    "minecraft": ">=1.19",
     "cloth-config": "*"
   },
   "suggests": {
+    "modmenu": "*",
     "another-mod": "*"
   }
 }
