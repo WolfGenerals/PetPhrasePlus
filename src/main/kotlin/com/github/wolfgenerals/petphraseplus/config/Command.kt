@@ -3,7 +3,6 @@ package com.github.wolfgenerals.petphraseplus.config
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
-import net.minecraft.client.MinecraftClient
 
 fun registerCommand() {
     var needOpen = false

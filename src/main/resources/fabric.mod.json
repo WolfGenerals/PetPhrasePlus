@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
   "id": "petphraseplus",
-  "version": "1.2.1",
+  "version": "1.3.0",
 
   "name": "Pet Phrase Plus Mod",
   "description": "",
   "authors": [
-    "WolfGenerals"
+    "WolfGenerals",
+    "FlareAP"
   ],
   "contact": {
-    "homepage": "",
-    "sources": ""
+    "homepage": "https://github.com/WolfGenerals/PetPhrasePlus",
+    "sources": "https://github.com/WolfGenerals/PetPhrasePlus"
   },
 
   "license": "AGPL-3.0",
@@ -33,12 +34,11 @@
   ],
 
   "depends": {
-    "fabric": "*",
     "minecraft": ">=1.19",
-    "cloth-config": "*"
+    "cloth-config": "*",
+    "fabric-language-kotlin": ">=1.10.8+kotlin.1.9.0"
   },
   "suggests": {
-    "modmenu": "*",
-    "another-mod": "*"
+    "modmenu": "*"
   }
 }

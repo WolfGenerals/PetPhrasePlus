@@ -6,7 +6,7 @@ import net.fabricmc.loader.api.FabricLoader
 import java.io.File
 
 var config: Config = Config()
-val configFile = FabricLoader.getInstance().configDir.resolve("petphraseplus.json").toFile()
+val configFile: File = FabricLoader.getInstance().configDir.resolve("petphraseplus.json").toFile()
 
 data class Config(
     val enabled: Boolean = true,

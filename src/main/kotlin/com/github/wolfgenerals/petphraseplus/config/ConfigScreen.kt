@@ -3,10 +3,8 @@ package com.github.wolfgenerals.petphraseplus.config
 import com.github.wolfgenerals.petphraseplus.i18n
 import com.github.wolfgenerals.petphraseplus.replace
 import me.shedaniel.clothconfig2.api.ConfigBuilder
-import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.Screen
-import java.io.IOException
 
 fun openScreen(client: MinecraftClient) {
         client.setScreen(configScreen(client.currentScreen))
