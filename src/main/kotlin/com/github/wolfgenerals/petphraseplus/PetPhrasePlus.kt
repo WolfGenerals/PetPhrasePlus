@@ -9,6 +9,5 @@ import net.minecraft.client.MinecraftClient
 @Environment(EnvType.CLIENT)
 fun init() {
     configFile.readConfig()?.also { config = it }
-
     registerCommand()
 }

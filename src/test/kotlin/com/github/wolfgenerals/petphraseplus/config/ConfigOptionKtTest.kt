@@ -1,5 +1,6 @@
 package com.github.wolfgenerals.petphraseplus.config
 
+import com.github.wolfgenerals.petphraseplus.Replace
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
@@ -24,11 +25,14 @@ class ConfigOptionKtTest : FunSpec({
 
 
 private val stringArb = Arb.string()
-private val stringListArb = Arb.list(stringArb)
+private val replaceArb = arbitrary {
+    Replace(stringArb.next(), stringArb.next())
+}
+private val stringListArb = Arb.list(replaceArb)
 var configGen: Arb<Config> = arbitrary { Config(
     enabled = it.random.nextBoolean(),
-    mark = stringArb.next(),
+    start = stringArb.next(),
     endInner = stringArb.next(),
     endOuter = stringArb.next(),
-    stringListArb.next(),
+    replace = stringListArb.next(),
 ) }

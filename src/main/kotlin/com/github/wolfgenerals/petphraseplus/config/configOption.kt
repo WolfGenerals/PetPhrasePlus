@@ -1,5 +1,6 @@
 package com.github.wolfgenerals.petphraseplus.config
 
+import com.github.wolfgenerals.petphraseplus.Replace
 import com.google.gson.Gson
 import net.fabricmc.loader.api.FabricLoader
 import java.io.File
@@ -9,10 +10,10 @@ val configFile = FabricLoader.getInstance().configDir.resolve("petphraseplus.jso
 
 data class Config(
     val enabled: Boolean = true,
-    val mark: String = "",
+    val start:String = "",
     val endInner: String = "",
     val endOuter: String = "",
-    val replace: List<String> = mutableListOf(),
+    val replace: List<Replace> = mutableListOf(),
 )
 
 fun Config.write(file: File) {
