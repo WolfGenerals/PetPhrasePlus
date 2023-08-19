@@ -1,55 +1,44 @@
-package com.github.wolfgenerals.petphraseplus.config;
+package com.github.wolfgenerals.petphraseplus.config
 
-import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
+import java.nio.file.Files
+import java.util.*
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Properties;
-
-public class ConfigSL {
-    public static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("petphraseplus.properties");
-
-    public static void newFile() throws IOException {
+object ConfigSL {
+    val PATH = FabricLoader.getInstance().configDir.resolve("petphraseplus.properties")
+    @JvmStatic
+    @Throws(IOException::class)
+    fun newFile() {
         if (!Files.exists(PATH)) {
-            new File(PATH.toString()).createNewFile();
+            File(PATH.toString()).createNewFile()
         }
     }
 
-    public static void loadConfig() {
-        Properties properties = new Properties();
+    @JvmStatic
+    fun loadConfig() {
+        val properties = Properties()
         try {
-            properties.load(new FileInputStream(PATH.toString()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            properties.load(FileInputStream(PATH.toString()))
+        } catch (e: IOException) {
+            throw RuntimeException(e)
         }
-        ConfigOption.enabled = properties.getProperty("enable", "true").equalsIgnoreCase("true");
-        ConfigOption.mark = properties.getProperty("mark", "&");
-        ConfigOption.endInner = properties.getProperty("endInner", "");
-        ConfigOption.endOuter = properties.getProperty("endOuter", "");
-        ConfigOption.replace = new ArrayList<>();
-        int i = 0;
-        while (properties.getProperty("replace" + i) != null) {
-            ConfigOption.replace.add(properties.getProperty("replace" + i));
-            i++;
+        val enabled = properties.getProperty("enable", "true").equals("true", ignoreCase = true)
+        val mark = properties.getProperty("mark", "&")
+        val endInner = properties.getProperty("endInner", "")
+        val endOuter = properties.getProperty("endOuter", "")
+        val replace = mutableListOf<String>()
+
+        var i = 0
+        while (properties.getProperty("replace$i") != null) {
+            replace.add(properties.getProperty("replace$i"))
+            i++
         }
-    }
 
-    public static void saveConfig() throws IOException {
-        Properties properties = new Properties();
+        config = Config(enabled, mark, endInner, endOuter, replace)
 
-        properties.setProperty("enable", String.valueOf(ConfigOption.enabled));
-        properties.setProperty("mark", ConfigOption.mark);
-        properties.setProperty("endInner", ConfigOption.endInner);
-        properties.setProperty("endOuter", ConfigOption.endOuter);
-
-        for (int i = 0; i < ConfigOption.replace.size(); i++) {
-            properties.setProperty("replace" + i, ConfigOption.replace.get(i));
-        }
-        properties.store(new FileOutputStream(PATH.toString()), "PetPhrasePlus Config");
     }
 }

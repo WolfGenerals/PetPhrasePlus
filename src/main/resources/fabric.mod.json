@@ -19,7 +19,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.github.wolfgenerals.petphraseplus.PetPhrasePlusClient"
+      {
+        "adapter": "kotlin",
+        "value": "com.github.wolfgenerals.petphraseplus.PetPhrasePlusKt::init"
+      }
     ],
     "modmenu": [
       "com.github.wolfgenerals.petphraseplus.config.ModMenuIntegration"

@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.2-SNAPSHOT'
 	id 'maven-publish'
+	id "org.jetbrains.kotlin.jvm" version "1.9.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -38,8 +39,13 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.8+kotlin.1.9.0")
 	modApi("me.shedaniel.cloth:cloth-config-fabric:10.0.96")
 	modApi("com.terraformersmc:modmenu:6.2.1")
+
+	testImplementation 'io.kotest:kotest-property:5.6.2'
+	testImplementation 'io.kotest:kotest-assertions-core:5.6.2'
+	testImplementation 'io.kotest:kotest-runner-junit5:5.6.2'
 }
 
 processResources {
@@ -83,4 +89,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+test {
+	useJUnitPlatform()
 }
