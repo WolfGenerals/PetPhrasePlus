@@ -2,9 +2,10 @@ package com.github.wolfgenerals.petphraseplus
 
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 
 val String.i18n: MutableText
-    get() = Text.translatable(this)
+    get() = TranslatableText(this)
 
 val String.replace
     get() = if (!isReplaceable) null

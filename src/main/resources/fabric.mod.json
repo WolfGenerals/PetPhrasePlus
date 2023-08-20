@@ -34,10 +34,10 @@
   ],
 
   "depends": {
-    "minecraft": ">=1.19",
+    "minecraft": "1.18.2",
     "fabric": "*",
     "cloth-config": "*",
-    "fabric-language-kotlin": ">=1.10.8+kotlin.1.9.0"
+    "fabric-language-kotlin": "*"
   },
   "suggests": {
     "modmenu": "*"
