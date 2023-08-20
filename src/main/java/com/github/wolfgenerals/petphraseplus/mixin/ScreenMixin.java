@@ -16,13 +16,13 @@ public abstract class ScreenMixin {
     @Shadow
     protected MinecraftClient client;
 
-    @Shadow
-    abstract public void sendMessage(String message, boolean toHud);
-
-    @Inject(method = "sendMessage(Ljava/lang/String;)V", at = @At("HEAD"), cancellable = true)
-    public void onSendMessage(String message, CallbackInfo ci) {
-        if (!ModifierKt.needModify(message)) return;
-        sendMessage(ModifierKt.modifyMessage(message), true);
+    @Inject(method = "sendMessage(Ljava/lang/String;Z)V", at = @At("HEAD"), cancellable = true)
+    public void onSendMessage(String message, boolean toHud, CallbackInfo ci) {
+        if (toHud) {
+            this.client.inGameHud.getChatHud().addToMessageHistory(message);
+        }
+        if (ModifierKt.needModify(message)) message = ModifierKt.modifyMessage(message);
+        this.client.player.sendChatMessage(message);
         ci.cancel();
     }
 }
