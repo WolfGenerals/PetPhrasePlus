@@ -3,11 +3,13 @@
 __在玩家发出的信息末尾加上一段文字，或者替换其中的某些文字！__  
 
 ---
-
+## 前置
+Fabric Language Kotlin
+Cloth Config API
 ## 配置文件  
 配置文件位于`config/petphraseplus.json`  
-可以用`/petphraseplus`打开配置界面  
-1.19.4也可以通过Modmenu模组打开配置界面
+可以用指令`/petphraseplus`打开配置界面  
+也可以通过Modmenu模组打开配置界面
 
 ### replace  
 用来替换的关键字  
